@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#090a10">
+<meta name="description" content="Protótipo mobile de A Morte — O Último Cigarro.">
+<link rel="manifest" href="manifest.webmanifest">
+<title>A Morte — O Último Cigarro</title>
+<style>
+:root{color-scheme:dark;--bg:#090a10;--panel:#12141c;--line:#343744;--text:#eee7e3;--muted:#a8a1a3;--warm:#d9a17c}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:Georgia,"Times New Roman",serif}
+body{min-height:100dvh;background:radial-gradient(ellipse at 50% 0%,#24212a 0%,#0c0d13 48%,#06070a 100%)}
+.app{width:min(760px,100%);margin:0 auto;min-height:100dvh;display:flex;flex-direction:column;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+.hero{height:43dvh;min-height:270px;max-height:430px;position:relative;background:linear-gradient(0deg,#090a10 0%,#090a1030 46%,#08090b66 100%),url("morte_referencia.jpg") center 22%/cover}
+.topline{position:absolute;top:15px;left:16px;right:16px;display:flex;justify-content:space-between;align-items:center}
+.pill{font:10px Arial,sans-serif;letter-spacing:.15em;text-transform:uppercase;border:1px solid #ffffff45;border-radius:99px;padding:8px 10px;background:#08090bb8}
+.title{position:absolute;left:22px;right:22px;bottom:10px}
+.eyebrow{color:var(--warm);font:10px Arial,sans-serif;letter-spacing:.23em;text-transform:uppercase}
+h1{font-size:clamp(32px,9vw,46px);font-weight:normal;margin:6px 0 2px}
+.subtitle{color:#c6bfc0;font-size:14px;margin:0}
+.chat{flex:1;display:flex;flex-direction:column;min-height:0}
+.chathead{padding:12px 18px;border-top:1px solid #343744;border-bottom:1px solid #343744;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.chathead h2{font-size:18px;font-weight:normal;margin:0}
+.status{font:10px Arial,sans-serif;color:#b5c4b3;text-align:right}
+.messages{padding:17px 16px 10px;display:flex;flex-direction:column;gap:12px;overflow:auto;flex:1;min-height:130px;max-height:34dvh}
+.msg{max-width:91%;padding:12px 14px;border-radius:13px;line-height:1.5;font-size:15px;overflow-wrap:anywhere;white-space:pre-wrap}
+.her{align-self:flex-start;background:#20222c;border:1px solid #343744;border-bottom-left-radius:4px}
+.me{align-self:flex-end;background:#3a2b29;border:1px solid #65483c;border-bottom-right-radius:4px}
+.label{display:block;color:var(--warm);font:10px Arial,sans-serif;letter-spacing:.13em;text-transform:uppercase;margin-bottom:5px}
+.composer{padding:12px 14px 15px;border-top:1px solid #343744;background:#0c0d13}
+.note{font:11px/1.45 Arial,sans-serif;color:var(--muted);margin:0 2px 10px}
+form{display:flex;gap:8px;align-items:stretch}
+input{min-width:0;flex:1;border:1px solid #414450;border-radius:12px;padding:13px 12px;background:#080a0f;color:var(--text);font:16px Arial,sans-serif}
+button{border:1px solid #815e4c;border-radius:12px;background:#4a342d;color:#fff0e6;padding:0 16px;font:14px Arial,sans-serif}
+button:active{transform:scale(.98)}
+.expressions{display:flex;gap:7px;overflow-x:auto;padding:11px 0 1px;scrollbar-width:thin}
+.expressions button{flex:0 0 auto;background:#171922;border-color:#3b3e4a;padding:9px 11px;font-size:12px}
+.expressions button.active{border-color:var(--warm);color:var(--warm)}
+.foot{font:10px/1.4 Arial,sans-serif;color:#827e85;padding:8px 2px 0}
+@media(min-width:700px){.app{padding:18px;gap:0}.hero{height:48vh;max-height:500px;border:1px solid var(--line);border-radius:14px 14px 0 0}.chat{border:1px solid var(--line);border-top:0;border-radius:0 0 14px 14px;overflow:hidden}.messages{max-height:340px}}
+</style>
+</head>
+<body>
+<main class="app">
+<section class="hero" aria-label="Imagem de referência da Morte">
+<div class="topline"><span class="pill">Protótipo 0.2</span><span class="pill">Uma noite chuvosa</span></div>
+<div class="title"><div class="eyebrow">O Último Cigarro</div><h1>A Morte</h1><p class="subtitle">“Você veio mesmo.”</p></div>
+</section>
+<section class="chat">
+<header class="chathead"><h2>Conversa à noite</h2><div class="status">● DEMONSTRAÇÃO<br>IA ainda não conectada</div></header>
+<div class="messages" id="messages" aria-live="polite">
+<div class="msg her"><span class="label">A Morte</span>Você veio mesmo.<br><br><em>Ela ergue os olhos por um instante. A chuva continua caindo atrás do banco.</em><br><br>…O que gostaria de me dizer?</div>
+</div>
+<div class="composer">
+<p class="note">Esta é a primeira camada visual. As respostas são provisórias; ainda vamos conectar a inteligência artificial.</p>
+<form id="form"><input id="input" autocomplete="off" placeholder="Fale com ela…" aria-label="Sua mensagem"><button type="submit">Enviar</button></form>
+<div class="expressions" aria-label="Expressão da personagem">
+<button type="button" class="active" data-expression="Neutra">Neutra</button><button type="button" data-expression="Curiosa">Curiosa</button><button type="button" data-expression="Triste">Triste</button><button type="button" data-expression="Vulnerável">Vulnerável</button><button type="button" data-expression="Quase sorrindo">Quase sorrindo</button>
+</div>
+<div class="foot" id="expressionText">Expressão selecionada: Neutra. Animações serão adicionadas numa próxima etapa.</div>
+</div>
+</section>
+</main>
+<script>
+const form=document.getElementById('form'),input=document.getElementById('input'),messages=document.getElementById('messages');
+function addMessage(who,text,cls){const d=document.createElement('div');d.className='msg '+cls;const l=document.createElement('span');l.className='label';l.textContent=who;d.append(l,document.createTextNode(text));messages.appendChild(d);messages.scrollTop=messages.scrollHeight}
+form.addEventListener('submit',e=>{e.preventDefault();const v=input.value.trim();if(!v)return;addMessage('Você',v,'me');addMessage('A Morte','Ainda estou aprendendo a responder. Esta versão é apenas o começo; em breve, vamos conectar uma IA para que eu possa conversar de verdade com você.','her');input.value='';input.focus()});
+document.querySelectorAll('[data-expression]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-expression]').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById('expressionText').textContent='Expressão selecionada: '+b.dataset.expression+'. As animações virão numa próxima etapa.'}));
+if('serviceWorker' in navigator && location.protocol.startsWith('http')) window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+</script>
+</body></html>

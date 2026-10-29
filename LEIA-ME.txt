@@ -1,0 +1,11 @@
+A MORTE — PROTÓTIPO MOBILE 0.2
+
+Arquivos preparados para publicar como site estático:
+- index.html: interface mobile-first
+- morte_referencia.jpg: imagem de referência
+- manifest.webmanifest e sw.js: base inicial para instalação como PWA
+
+IMPORTANTE:
+Este protótipo ainda não tem IA, voz, memória persistente ou animações reais.
+As respostas são demonstrativas. Para abrir por link, os arquivos precisam ser publicados
+num serviço de hospedagem estática. Não inclua chaves de API no HTML.
